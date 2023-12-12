@@ -1,0 +1,15 @@
+import re
+
+def create_butterfly_pattern(size):
+    pattern = re.compile(r'(?: \* ){1,}(?!$)')
+    lines = []
+    for i in range(size):
+        if i < size // 2:
+            lines.append(pattern.sub('*', ' ' * (size - i - 1) + '*'))
+        else:
+            lines.append(pattern.sub('*', ' ' * (i - size // 2) + '*'))
+    return "\n".join(lines)
+
+size = 5
+pattern = create_butterfly_pattern(size)
+print(pattern)
